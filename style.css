@@ -1,0 +1,283 @@
+:root {
+	--gradX: 0%;
+	--gradY: 0%;
+	--c1: rgba(168, 239, 255, 1);
+	--c2: rgba(168, 239, 255, 0.1);
+}
+
+@property --gradX {
+syntax: '<percentage>';
+initial-value: 50%;
+inherits: true;
+}
+
+@property --gradY {
+syntax: '<percentage>';
+initial-value: 0%;
+inherits: true;
+}
+
+body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 1.5em;
+}
+
+.BG{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: -2;
+}
+
+
+.mainDiv{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.CardDiv{
+    position: relative;
+    width: 60%;
+    height: 80%;
+    background-color: #2a2a2a9a;
+    border: 0.35rem solid;
+    border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1) 10%, var(--c2) 30%) 30;
+    display: flex;
+    animation: borderRadial 7s linear infinite forwards;
+}
+
+.CardDiv::before{
+    content: "";
+    position: absolute;
+    top: -0.35rem;
+    left: -0.35rem;
+    width: 100%;
+    height: 100%;    
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 3px,
+      transparent 30px
+    );
+    background-size:  100% 30px;
+
+    border: 0.35rem solid ;
+    border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1) 10%, var(--c2) 30%) 30;
+    animation: borderRadial 7s linear infinite forwards reverse,  pan-overlay 60s infinite linear;
+}
+
+@keyframes pan-overlay {
+  
+    from {
+      background-position: 0% 0%
+    }
+    
+    to {
+      background-position: 0% 100%;
+      
+    }
+  }
+
+@keyframes borderRadial {
+	0%{
+        --gradX: 0%;
+        --gradY: 0%;
+    }
+    25%{
+        --gradX: 100%;
+        --gradY: 0%;
+    }
+    50%{
+        --gradX: 100%;
+        --gradY: 100%;
+    }
+    75%{
+        --gradX: 0%;
+        --gradY: 100%;
+    }
+    100%{
+        --gradX: 0%;
+        --gradY: 0%;
+    }
+
+    
+   
+}
+
+.LeftDiv{
+    width: 45%;
+    height: 100%;
+    
+    border-top-left-radius:20px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: bold;
+}  
+
+.CharacterName{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0px 5px 5px black;
+}
+.Name{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 9%;
+    color: white;
+    font-size: 3em;
+    letter-spacing: 1px;
+
+}
+
+
+.Logo{
+    height: 100%;
+    filter: drop-shadow(0px 0px 10px black);
+}
+
+
+
+.Name p{
+    padding-top: 1.5%;
+    text-align: center;
+}
+
+
+.Class{
+    margin-left: 2%;
+    position: relative;
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.Class::before{
+    content: '"No, I cannot place my faith in it, but my anticipation stems precisely from this distrust. A claim is always verifiable before it is discredited entirely."';
+    font-weight: 400;
+    position: absolute;
+    font-style: italic;
+    font-size: 1em;
+    top: 110%;
+    width: 85%;
+    text-align: center;
+    color: white;
+}
+
+
+
+.CharacterIMG{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: drop-shadow(0px 0px 5px var(--c1));
+    z-index: 2;
+}
+
+.RightDiv{
+    width: 55%;
+    height: 100%;
+    float: right;
+    font-family: "League Spartan", sans-serif;
+    border-left: 0.35rem solid;
+    border-image: linear-gradient(
+    transparent 10%, 
+    var(--c2) 15%, var(--c1) 60%, var(--c2) 85%,
+    transparent 90%
+    ) 30;
+}
+
+
+
+.ActiveSkills{
+    height: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+.ActiveSkills h1{
+    margin: auto;
+    position: relative;
+    width: fit-content;
+    color: white;
+    font-size: 2.5em;
+    margin-top: 1%;
+    border: 0.35rem solid;
+    padding: 1.5%;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-shadow: 0px 5px 5px black;
+    border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1) 10%, var(--c2) 30%) 20;
+    animation: borderRadial 7s linear infinite;
+}
+
+.ActiveSkills h1::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -0.35rem;
+    left: -0.35rem;
+    border: 0.35rem solid;
+    border-image: radial-gradient(ellipse at var(--gradY) var(--gradX), var(--c1) 10%, var(--c2) 30%) 20;
+    animation: borderRadial 7s linear infinite;
+}
+
+@keyframes border {
+    
+}
+
+.DescriptionSkill{
+    width: 95%;
+    margin: auto;
+    color: white;
+    font-size:1.2em;
+    text-shadow: 0px 3px 3px black;
+}
+
+.yuki{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.ice{
+    position: absolute;
+    top: -10%;
+    background-color: var(--c1);
+    box-shadow: 0 0 30px var(--c1);
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+@keyframes translate {
+    from{}
+    to{
+        top: 120%;
+    }
+}
+
+@keyframes wind {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(150px);
+    }
+  }
